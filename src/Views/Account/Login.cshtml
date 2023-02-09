@@ -1,0 +1,51 @@
+﻿@model AuthSample.Models.LoginModel
+
+<div style="margin: 50px auto; width: 500px;">
+    <div class="form-login">
+        <h3 style="margin-bottom: 25px;">Login with username and password</h3>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label class="sr-only">Email</label>
+                <input autofocus class="form-control" id="Email" name="Email" type="text" value="@Html.ValueFor(m => m.Email)">
+            </div>
+            <div class="form-group">
+                <label class="sr-only">Password</label>
+                <input class="form-control" id="Password" name="Password" type="password">
+            </div>
+            <input type="submit" value="Login" class="btn btn-primary" />
+        }
+    </div>
+    <hr />
+    <div class="sso-logins">
+        <h3>Login with Azure Active Directory</h3>
+        <div class="sso-login-microsoft" style="margin-top: 20px; background-color: black;">
+            <a href="@Url.Action("SsoLogin")" style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="300px" height="50px" viewBox="0 0 3278 522" class="SignInButton">
+                <style type="text/css">
+                    .fnt0 {
+                        font-size: 260px;
+                        font-family: 'Segoe UI Semibold', 'Segoe UI', sans-serif;
+                        text-decoration: none;
+                    }
+                </style>
+                <rect x="150" y="129" width="122" height="122" fill="#F35325" />
+                <rect x="284" y="129" width="122" height="122" fill="#81BC06" />
+                <rect x="150" y="263" width="122" height="122" fill="#05A6F0" />
+                <rect x="284" y="263" width="122" height="122" fill="#FFBA08" />
+                <text x="550" y="357" fill="white" class="fnt0">Sign in with Microsoft</text>
+            </svg>
+            </a>
+        </div>
+    </div>
+
+    <footer style="margin-top: 50px;">
+        <p>
+            &copy; @DateTime.Now.Year
+            -
+            ASP.NET Authentication Sample
+        </p>
+    </footer>
+</div>
+
