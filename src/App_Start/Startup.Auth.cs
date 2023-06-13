@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
@@ -22,7 +23,7 @@ namespace AuthSample
                 LoginPath = new PathString("/login")
             });
 
-            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ApplicationCookie);
+            app.SetDefaultSignInAsAuthenticationType(DefaultAuthenticationTypes.ApplicationCookie);
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
                 AuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType,
